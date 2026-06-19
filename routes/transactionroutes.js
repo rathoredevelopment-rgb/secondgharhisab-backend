@@ -8,7 +8,7 @@ const {
   getByCategory,
   getTransactionSummary,
   getGroupedTransactions
-} = require('../controllers/transactioncontroller');
+} = require('../controllers/transactionController');
 const { protect } = require('../middleware/authMiddleware');
 
 router.use(protect); // Sabhi routes protected
