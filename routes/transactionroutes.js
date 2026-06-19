@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+
+// ✅ TRANSACTION controller import karo
 const {
   getAllTransactions,
   getExpenseTransactions,
@@ -9,21 +11,17 @@ const {
   getTransactionSummary,
   getGroupedTransactions
 } = require('../controllers/transactionController');
+
 const { protect } = require('../middleware/authMiddleware');
 
-router.use(protect); // Sabhi routes protected
+router.use(protect);
 
-// ✅ MAIN - poora data ek saath (BEST)
-router.get('/',                        getAllTransactions);
-
-// ✅ TAB FILTERS (screen ke upar wale buttons)
-router.get('/expenses',                getExpenseTransactions);   // खर्च tab
-router.get('/incomes',                 getIncomeTransactions);    // आय tab
-router.get('/credits',                 getCreditTransactions);    // उधार tab
-router.get('/category/:categoryName',  getByCategory);            // Grocery tab
-
-// ✅ EXTRA
-router.get('/summary',                 getTransactionSummary);    // top card only
-router.get('/grouped',                 getGroupedTransactions);   // date wise group
+router.get('/',                       getAllTransactions);
+router.get('/expenses',               getExpenseTransactions);
+router.get('/incomes',                getIncomeTransactions);
+router.get('/credits',                getCreditTransactions);
+router.get('/category/:categoryName', getByCategory);
+router.get('/summary',                getTransactionSummary);
+router.get('/grouped',                getGroupedTransactions);
 
 module.exports = router;

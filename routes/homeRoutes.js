@@ -1,29 +1,29 @@
 const express = require('express');
 const router = express.Router();
+
+// ✅ HOME controller import karo
 const {
-  getAllTransactions,
-  getExpenseTransactions,
-  getIncomeTransactions,
-  getCreditTransactions,
-  getByCategory,
-  getTransactionSummary,
-  getGroupedTransactions
-} = require('../controllers/transactionController');
+  getHomeSummary,
+  getTotalExpense,
+  getAnnualExpense,
+  getThisMonthExpense,
+  getStats,
+  getTotalIncome,
+  getBudgetProgress,
+  getQuickAddData
+} = require('../controllers/homeController');
+
 const { protect } = require('../middleware/authMiddleware');
 
-router.use(protect); // Sabhi routes protected
+router.use(protect);
 
-// ✅ MAIN - poora data ek saath (BEST)
-router.get('/',                        getAllTransactions);
-
-// ✅ TAB FILTERS (screen ke upar wale buttons)
-router.get('/expenses',                getExpenseTransactions);   // खर्च tab
-router.get('/incomes',                 getIncomeTransactions);    // आय tab
-router.get('/credits',                 getCreditTransactions);    // उधार tab
-router.get('/category/:categoryName',  getByCategory);            // Grocery tab
-
-// ✅ EXTRA
-router.get('/summary',                 getTransactionSummary);    // top card only
-router.get('/grouped',                 getGroupedTransactions);   // date wise group
+router.get('/summary',         getHomeSummary);
+router.get('/total-expense',   getTotalExpense);
+router.get('/annual-expense',  getAnnualExpense);
+router.get('/monthly-expense', getThisMonthExpense);
+router.get('/stats',           getStats);
+router.get('/total-income',    getTotalIncome);
+router.get('/budget-progress', getBudgetProgress);
+router.get('/quick-add',       getQuickAddData);
 
 module.exports = router;
