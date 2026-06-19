@@ -28,6 +28,8 @@ app.use('/api/profile', require('./routes/profileRoutes'));
 app.use('/api/settings', require('./routes/settingsRoutes'));
 app.use('/api/voice', require('./routes/voiceRoutes'));
 app.use('/api/notifications', notificationRoutes);
+app.use('/api/home', require('./routes/homeRoutes'));
+app.use('/api/transactions', require('./routes/transactionRoutes'));
 
 
 // हेल्थ चेक
